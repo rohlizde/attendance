@@ -1,0 +1,24 @@
+
+{block content}
+<h1>Seznam klientů</h1>
+<table>
+    <tr>
+        <th>client_id</th>
+        <th>public_key</th>
+        <th>number_newsletter_sent</th>
+        <th>limit_newsletter_sent</th>
+        <th colspan="4">akce</th>
+    </tr>
+    {foreach $klienti as $klient}
+    <tr>
+        <td>{$klient->client_id}</td>
+        <td>{$klient->public_key}</td>
+        <td>{$klient->number_newsletter_sent}</td>
+        <td>{$klient->limit_newsletter_sent}</td>
+        <td><a n:href="Client:remove $klient->client_id">smazat</a></td>
+        <td><a n:href="Client:edit $klient->client_id">upravit</a></td>
+       
+    </tr>
+    {/foreach}
+</table>
+<a n:href="Client:add">Přidat nového klienta</a>

@@ -1,0 +1,136 @@
+{**
+ * My Application layout template.
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+
+	<title>{block title|striptags|upper}Nette Application Skeleton{/block}</title>
+        <link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css" type="text/css" media="all">
+        <link rel="stylesheet" href="{$basePath}/css/style.css" type="text/css" media="all">
+        <link rel="stylesheet" href="{$basePath}/css/form.css" type="text/css" media="all">
+        <link rel="stylesheet" href="{$basePath}/css/formResponsive.css" type="text/css" media="all">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	{block head}{/block}
+</head>
+
+<body>
+	<script> document.documentElement.className+=' js' </script>
+
+	{block scripts}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	<script src="{$basePath}/js/jquery.nette.js"></script>
+	<script src="{$basePath}/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $("a.ajax").live("click", function (event) {
+                event.preventDefault();
+                $.get(this.href);
+            });
+        </script>
+	{/block}
+        <div class="body1">
+            <div class="body2">
+                <div class="main hejtaxi">
+                    <!-- header -->
+                    <header>
+                        <div class="wrapper row">
+                            <h1>
+                                <div n:foreach="$flashes as $flash" class="flash ajax {$flash->type}">{$flash->message}</div>
+                                <a href="{link Homepage:default}" id="logo">
+                                    <span class="firstLetter">A</span>I <span class="firstLetter">G</span>OU<span class="firstLetter">!</span>
+                                </a>
+                            </h1>   
+                            {include menu.latte}
+                        </div>
+
+<!--                        <div class="wrapper row">
+                            <div class="slider">
+                                <div class="rslides_container">
+                                    <ul class="rslides" id="slider">
+                                        <li><img src="images/img1.jpg" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>-->
+                    </header>
+                    <!-- header end-->
+                </div>
+            </div>
+        </div>
+        <div class="body3">
+            <div class="main hejtaxi">
+                {include content}
+            </div>
+        </div>
+        <div class="body4">
+            <div class="main hejtaxi">
+                <article id="content2">
+                    <div class="wrapper row">
+                        <section class="col-1-4">
+                            <div class="wrap-col">
+                                <h4>Proč využívat naše služby?</h4>
+                                <ul class="list1">
+                                    <li><a href="#">Jsme nejlepší</a></li>
+                                    <li><a href="#">Jsme opravdu nejlepší</a></li>
+                                    <li><a href="#">Ano, jsme nejlepší</a></li>
+                                    <li><a href="#">Nejlepší? To jsme my!</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="col-1-4">
+                            <div class="wrap-col">
+                                <h4>Adresa</h4>
+                                <ul class="address">
+                                    <li><span>Země:</span>Uganda</li>
+                                    <li><span>Město:</span>Dejamano</li>
+                                    <li><span>Telefon:</span>456 965 854 25</li>
+                                    <li><span>Email:</span><a href="mailto:">rohlizde@fit.cvut.cz</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="col-1-4">
+                            <div class="wrap-col">
+                                <h4>Sledujte nás!</h4>
+                                <ul id="icons">
+                                    <li><a href="#"><img src="images/icon1.jpg" alt="">Facebook</a></li>
+                                    <li><a href="#"><img src="images/icon2.jpg" alt="">Twitter</a></li>
+                                    <li><a href="#"><img src="images/icon3.jpg" alt="">LinkedIn</a></li>
+                                    <li><a href="#"><img src="images/icon4.jpg" alt="">Delicious</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="col-1-4">
+                            <div class="wrap-col">
+                                <h4>Novinky</h4>
+                                <form id="newsletter" method="post">
+                                    <div>
+                                        <div class="wrapper">
+                                            <input class="input" type="text" value="Zde napište svůj email"  onblur="if (this.value == '')
+                    this.value = 'Zde napište svůj email'" onfocus="if (this.value == 'Zde napište svůj email')
+                    this.value = ''" >
+                                        </div>
+                                        <a href="#" class="button" onclick="document.getElementById('newsletter').submit()">Odeslat</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+                <!-- content end -->
+            </div>
+        </div>
+        <div class="main hejtaxi">
+            {include footer.latte}
+        </div>
+    </body>
+</html>

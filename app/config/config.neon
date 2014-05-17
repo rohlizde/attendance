@@ -1,0 +1,45 @@
+#
+# SECURITY WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+#
+# If you don't protect this directory from direct web access, anybody will be able to see your passwords.
+# http://nette.org/security-warning
+#
+common:
+	parameters:
+		dibi:
+			driver: mysql
+			host: localhost
+			username: root
+			password:
+			database: attendance
+		facebook:
+			appId: '582977225113204'
+			secret: 8b22969885caf0dd602204438b42b522
+			scope: 'email,user_likes'
+			token: 089151913d3b8e18fbd745d7786090ce
+	php:
+		date.timezone: Europe/Prague
+		# zlib.output_compression: yes
+
+	nette:
+		application:
+			errorPresenter: Error
+			mapping:
+				*: App\*Module\*Presenter
+
+		session:
+		container:
+			debugger: true
+	services:
+		- App\RouterFactory
+		- facebookUser
+		- dibi::connect(%dibi%)
+		userModel: Model\UserModel
+		router: @App\RouterFactory::createRouter
+		facebook: Facebook( {appId: %facebook.appId%, secret: %facebook.secret%} )
+		facebookAuthenticator: Model\FacebookAuthenticator
+		- App\Permission
+
+production < common:
+
+development < common:

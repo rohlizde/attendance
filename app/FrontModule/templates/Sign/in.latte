@@ -1,0 +1,100 @@
+{block content}
+<div class="well col-lg-6">
+    <form n:name="signInForm" class="form-horizontal">
+                <p n:block=title class="lead">Přihlášení</p>
+        <fieldset>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-10">
+                    <input type="text" n:name="password" class="form-control" id="inputEmail" placeholder="Zadejte Váš email.">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                <div class="col-lg-10">
+                    <input type="password" n:name="password" class="form-control" id="inputPassword" placeholder="Zdejte Vaše heslo.">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-9 col-lg-offset-3">
+                    <a href="{$fbUrl}" class="btn btn-info">Přihlásit přes Facebook</a>
+                    <button class="btn btn-default">Reset</button>
+                    <input type="submit" n:name="submit" class="btn btn-success" value="Přihlásit">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{*{foreach $userProfile as $prof}
+    {$prof}
+{/foreach}*}
+{* <div class="form">
+        <form n:name="signInForm" id="rezervation-form" method="post">
+        <ul class="errors" n:if="$form->hasErrors()">
+            <li n:foreach="$form->errors as $error">{$error}</li>
+        </ul>
+            <div id="wrapping" class="clearfix">
+                <section id="aligned">
+                    <input type="text" n:name="email" id="email" placeholder="Váš email" autocomplete="off" tabindex="1" class="txtinput">
+
+                    <input type="password" n:name="password" id="password" placeholder="Vaše heslo" autocomplete="off" tabindex="2" class="txtinput">
+                </section>
+            </div>
+            <section id="buttons">
+                <input type="button" name="register" id="resetbtn" class="resetbtn" value="Registrovat">
+                <input type="submit" n:name="submit" id="submitbtn" class="submitbtn" tabindex="4" value="Přihlásit">
+                <br style="clear:both;">
+            </section>
+        </form>
+    </div>-->
+    <!--<div class="form">
+                <div id="wrapping" class="clearfix">
+                    <section id="aligned">
+                        <input type="text" name="name" id="name" placeholder="Vaše jméno" autocomplete="off" tabindex="1" class="txtinput">
+
+                        <input type="email" name="email" id="email" placeholder="Váš email" autocomplete="off" tabindex="2" class="txtinput">
+
+                        <input type="url" name="website" id="website" placeholder="Webová stránka" autocomplete="off" tabindex="3" class="txtinput">
+
+                        <input type="tel" name="telephone" id="telephone" placeholder="Telefoní číslo" tabindex="4" class="txtinput">
+
+                        <textarea name="message" id="message" placeholder="Nějaká zpráva..." tabindex="5" class="txtblock"></textarea>
+                    </section>
+
+                    <section id="aside" class="clearfix">
+                        <section id="recipientcase">
+                            <h3>Select box:</h3>
+                            <select id="recipient" name="recipient" tabindex="6" class="selmenu">
+                                <option value="value1">Another value</option>
+                                <option value="value2">Some value</option>
+                                <option value="value3">Value</option>
+                            </select>
+                        </section>
+
+                        <section id="prioritycase">
+                            <h3>Radio</h3>
+                            <span class="radiobadge">
+                                <input type="radio" id="low" name="priority" value="low">
+                                <label for="low">Nízká</label>
+                            </span>
+
+                            <span class="radiobadge">
+                                <input type="radio" id="med" name="priority" value="med" checked="checked">
+                                <label for="med">Střední</label>
+                            </span>
+
+                            <span class="radiobadge">
+                                <input type="radio" id="high" name="priority" value="high">
+                                <label for="high">Vysoká</label>
+                            </span>
+                        </section>
+                    </section>
+                </div>
+                <section id="buttons">
+                    <input type="reset" name="reset" id="resetbtn" class="resetbtn" value="Reset">
+                    <input type="submit" name="submit" id="submitbtn" class="submitbtn" tabindex="7" value="Submit this!">
+                    <br style="clear:both;">
+                </section>
+            </form>
+        </div>*}
+{* or use {include '../components/form.latte', form => signInForm} *}

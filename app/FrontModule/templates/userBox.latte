@@ -1,0 +1,38 @@
+{* Latte template *}
+
+{block content}
+{*<div id="userBox" class="well">
+    <a href="{link Sign:out}" class="btn btn-default bottom">Odhlásit<span> {$user->getIdentity()->name} {$user->getIdentity()->surname}</span></a>
+</div>*}
+<div class="well col-lg-6" id="userBox">
+    {if !$user->isLoggedIn()}
+        <form n:name="signInForm" class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" n:name="password" class="form-control" id="inputEmail" placeholder="Zadejte Váš email.">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                        <input type="password" n:name="password" class="form-control" id="inputPassword" placeholder="Zdejte Vaše heslo.">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <a href="{$fbUrl}" class="btn btn-info">Přihlásit přes Facebook</a>
+                        <button class="btn btn-default">Reset</button>
+                        <input type="submit" n:name="submit" class="btn btn-success" value="Přihlásit">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    {else}
+        <h2>Peněženka</h2>
+        <div class="col-lg-5 col-lg-offset-3">
+            <a n:href="Sign:out" class="btn btn-default bottom-link">Odhlásit</a>
+        </div>
+    {/if}
+    </div>

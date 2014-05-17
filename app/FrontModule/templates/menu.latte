@@ -1,0 +1,20 @@
+
+{block content}
+<nav>
+    <ul id="menu">
+        <li id="nav1"{if $presenter == "Homepage"} class="active"{/if}><a href="{link Homepage:default}">Home<span>Vítejte!</span></a></li>
+        <li id="nav3"{if $presenter == "Event"} class="active"{/if}><a href="{link Event:default}">Události<span>Hlavně fotbal</span></a></li>
+        <li id="nav2"><a href="#">Statistiky<span>Připravujeme</span></a></li>
+        <li id="nav5"><a href="#">Kontakt<span>Napište nám!</span></a></li>
+        {if $user->isLoggedIn()}
+        
+        <li id="nav4"{if $presenter == "Sign"} class="active"{/if}><a href="#" name="user">Účet<span>{$user->getIdentity()->name} {$user->getIdentity()->surname}</span></a>
+            
+        
+        </li>{include userBox.latte}
+        {else}
+        <li id="nav4"{if $presenter == "Sign"} class="active"{/if}><a href="{link Sign:in}">Přihlášení<span>Hurá!</span></a></li>
+        {/if}
+    </ul>
+</nav>
+{/block}
